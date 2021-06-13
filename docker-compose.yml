@@ -1,0 +1,8 @@
+version: '3'
+services:
+  sandbox:
+    build:
+      context: ./sandbox
+      dockerfile: Dockerfile
+    volumes:
+      - ./sandbox:/server/
