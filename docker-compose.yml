@@ -9,5 +9,7 @@ services:
       PORT: 3000
       QUEUE_SIZE: 3
       ENV_NAME: local
+    ports:
+      - 3000:3000
     volumes:
       - ./sandbox:/server/

@@ -24,6 +24,7 @@ def multiple_control(q):
 @multiple_control(queueing)
 def root():
     print("[GET] root")
+    time.sleep(5)
     return(make_response('end root'))
 
 @app.route('/slow', methods=['GET'])
