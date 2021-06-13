@@ -4,5 +4,9 @@ services:
     build:
       context: ./sandbox
       dockerfile: Dockerfile
+    environment: 
+      HOST: 0.0.0.0
+      PORT: 3000
+      QUEUE_SIZE: 3
     volumes:
       - ./sandbox:/server/
