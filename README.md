@@ -4,9 +4,6 @@
 
 ## 実行
 
-一旦下記で実行
-
 ```
-$ docker compose up -d
-$ curlとかで実行
+$ make test
 ```
