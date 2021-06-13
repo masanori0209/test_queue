@@ -1,5 +1,5 @@
 from flask import Flask, make_response
-from Queue import Queue
+from queue import Queue
 import time
 import functools
 import os
@@ -11,7 +11,7 @@ def multiple_control(q):
     def _multiple_control(func):
         @functools.wraps(func)
         def wrapper(*args,**kwargs):
-            q.put(time.time())
+            q.put(str(time.time()))
             result = func(*args,**kwargs)
             q.get()
             q.task_done()
