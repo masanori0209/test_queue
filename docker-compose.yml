@@ -8,5 +8,6 @@ services:
       HOST: 0.0.0.0
       PORT: 3000
       QUEUE_SIZE: 3
+      ENV_NAME: local
     volumes:
       - ./sandbox:/server/

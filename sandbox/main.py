@@ -4,8 +4,8 @@ import time
 import functools
 import os
 
-app = Flask(__name__, static_folder=None)
-queueing = Queue(maxsize=os.envget("QUEUE_SIZE"))
+app = Flask(__name__)
+queueing = Queue(maxsize=os.getenv("QUEUE_SIZE"))
 
 def multiple_control(q):
     def _multiple_control(func):
@@ -21,13 +21,13 @@ def multiple_control(q):
     return _multiple_control
 
 @app.route('/', methods=['GET'])
-@multiple_control(singleQueue)
+@multiple_control(queueing)
 def root():
     print("[GET] root")
     return(make_response('end root'))
 
 @app.route('/slow', methods=['GET'])
-@multiple_control(singleQueue)
+@multiple_control(queueing)
 def slow():
     print('[GET] slow')
     time.sleep(10)
@@ -35,7 +35,7 @@ def slow():
 
 if __name__ == "__main__":
     app.run(
-        host='localhost',
-        port=3000,
+        host=os.getenv("HOST"),
+        port=os.getenv("PORT"),
         threaded=True
     )
