@@ -5,13 +5,17 @@ import functools
 import os
 
 app = Flask(__name__)
-queueing = Queue(maxsize=os.getenv("QUEUE_SIZE"))
+queueing = Queue(
+    maxsize=int(
+        os.getenv("QUEUE_SIZE")
+    )
+)
 
 def multiple_control(q):
     def _multiple_control(func):
         @functools.wraps(func)
         def wrapper(*args,**kwargs):
-            q.put(str(time.time()))
+            q.put(time.time())
             result = func(*args,**kwargs)
             q.get()
             q.task_done()
