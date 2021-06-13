@@ -1,12 +1,12 @@
-# dynamic_import_python
+# キューイングの実験メモ
 
-動的にClassを変換して、実行できるかの試し
+キューを使った排他制御のあれこれメモ
 
 ## 実行
 
 一旦下記で実行
 
 ```
-$ docker compose run sandbox bash
-$ python main.py
+$ docker compose up -d
+$ curlとかで実行
 ```
